@@ -7,7 +7,9 @@ WORKDIR /app
 COPY Gemfile /app/
 COPY lib/ /app/lib/
 COPY spec/ /app/spec/
+COPY ./run_specs.sh /app/
 
+RUN chmod +x ./run_specs.sh
 RUN bundle install
 
-CMD ["bundle", "exec", "rspec", "spec/"]
+CMD ["./run_specs.sh"]
